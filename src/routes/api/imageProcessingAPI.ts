@@ -5,8 +5,8 @@ import { getAbsolutePath } from '../../utils/pathHelper';
 const router = express.Router();
 
 router.get('/resize', async (req, res) => {
-  const width: number = Number(req.query.width);
-  const height: number = Number(req.query.height);
+  const width = Number(req.query.width);
+  const height = Number(req.query.height);
   const fileName = req.query.filename;
   if (!width || !height || !fileName)
     res

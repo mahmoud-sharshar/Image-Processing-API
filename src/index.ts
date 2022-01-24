@@ -4,6 +4,9 @@ const app = express();
 const port = 4000;
 
 app.use('/', apiRoutes);
+
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`);
 });
+
+export default app;
