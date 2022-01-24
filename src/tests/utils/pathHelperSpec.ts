@@ -7,12 +7,13 @@ describe('Test Path Itilities', () => {
     const currentDir = process.cwd();
     fs.open(createdFileName, 'w', function (err) {
       if (err) throw err;
-      console.log('Created file!');
       const resolvedPath = getAbsolutePath(createdFileName);
-      expect(resolvedPath).toEqual(`${currentDir}/${createdFileName}`);
+      expect(resolvedPath).toEqual(
+        `${currentDir}/${createdFileName}` ||
+          `${currentDir}\\${createdFileName}`
+      );
       fs.unlink(createdFileName, function (err) {
         if (err) throw err;
-        console.log('File deleted!');
       });
     });
   });

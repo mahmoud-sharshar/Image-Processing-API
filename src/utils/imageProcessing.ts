@@ -5,10 +5,10 @@ export const resizeImage = async (
   width: number,
   height: number,
   resizedFilePath: string
-) => {
+): Promise<sharp.OutputInfo> => {
   try {
     return await sharp(filePath).resize(width, height).toFile(resizedFilePath);
-  } catch (err: any) {
-    throw new Error(err.message);
+  } catch ({ message }) {
+    throw new Error(message as string);
   }
 };

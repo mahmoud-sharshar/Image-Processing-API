@@ -25,8 +25,8 @@ describe('Test Image Processing Itilities', () => {
     const filePath = getAbsolutePath(`images/full/${fileName}`);
     try {
       await resizeImage(filePath, width, height, resizedFilePath);
-    } catch (error: any) {
-      expect(error.message).toEqual('Input file is missing');
+    } catch ({ message }) {
+      expect(message as string).toEqual('Input file is missing');
     }
     expect(isFileExists(resizedFilePath)).toBe(false);
   });
