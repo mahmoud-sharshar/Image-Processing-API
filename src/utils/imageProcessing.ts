@@ -6,5 +6,9 @@ export const resizeImage = async (
   height: number,
   resizedFilePath: string
 ) => {
-  return await sharp(filePath).resize(width, height).toFile(resizedFilePath);
+  try {
+    return await sharp(filePath).resize(width, height).toFile(resizedFilePath);
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
 };
